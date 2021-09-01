@@ -10,21 +10,24 @@ La clase Math de Java define un método de clase sqrt para el cálculo de la ra�
 cuadrada.
 */
 
-public class PuntoGeometrico extends CalculosGeometricos{
+public class PuntoGeometrico extends CalculosGeometricos {
 
-        private double x;
-        private double y;
+    private double x;
+    private double y;
 
-    PuntoGeometrico(){
-            this(0,0);            
-        }        
-
-    PuntoGeometrico(double x, double y){
-        this.setX(x);
-        this.setY(y);
+    PuntoGeometrico() {
+        this(0, 0);
     }
-    
 
+    PuntoGeometrico(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    static double distanciaEuclidea(PuntoGeometrico a,PuntoGeometrico b){       
+        double distEuc = Math.sqrt((Math.pow((a.getX() - b.getX()),2))+ (Math.pow((a.getY() - b.getY()),2)));
+        return distEuc;
+    }
 
     public double getX() {
         return this.x;
@@ -42,12 +45,24 @@ public class PuntoGeometrico extends CalculosGeometricos{
         this.y = y;
     }
 
-    public void desplazarPunto(double x, double y){
-        setX(x);
-        setY(y);
-    }   
+    public void desplazarPunto(double x, double y) {
+        this.setX(x);
+        this.setY(y);
+    }
+
+    public double distanciaEuclidea(PuntoGeometrico a){       
+        PuntoGeometrico.distanciaEuclidea(this, a);
+    }
 
     public static void main(String[] args) {
+
+
+        PuntoGeometrico p1 = new PuntoGeometrico(10,10);
+        PuntoGeometrico p2 = new PuntoGeometrico(20,20);
+
+        p1.distanciaEuclidea(p2);
+
+        PuntoGeometrico.distanciaEuclidea(p1, p2);
     }
 
 }

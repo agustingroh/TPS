@@ -6,12 +6,12 @@ import java.util.List;
 public class Temporada  {
 
     private List<Episodio> episodios = new ArrayList<Episodio>();
-    private int temp;
+    private int numeroDeTemporada;
 
 
 
-    Temporada(int temp) {
-        this.temp = temp;
+    Temporada(int numeroDeTemporada) {
+        this.numeroDeTemporada = numeroDeTemporada;
     }
 
     public Episodio getEpisodios(String titulo) {

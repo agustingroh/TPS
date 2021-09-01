@@ -24,9 +24,6 @@ public class Rectangulo extends PuntoGeometrico {
     private PuntoGeometrico vertice3;
     private PuntoGeometrico vertice4;
 
-    Rectangulo() {
-
-    }
 
     Rectangulo(PuntoGeometrico v1, PuntoGeometrico v2, PuntoGeometrico v3, PuntoGeometrico v4) {
         this.vertice1 = v1;
@@ -111,13 +108,11 @@ public class Rectangulo extends PuntoGeometrico {
     }
 
     public boolean esCuadrado() {
-        if (calcularLado1() == calcularLado2())
-            return true;
-        return false;
+        return (this.calcularLado1() == this.calcularLado2());
     }
 
     public double calcularLadoSuperior() {
-        return calcularLado1();
+        return this.calcularLado1();
     }
 
     public void posicion() {
@@ -131,9 +126,8 @@ public class Rectangulo extends PuntoGeometrico {
         this.vertice1.setX(vertice1.getX()+pos);
         this.vertice2.setX(vertice2.getX()+pos);
         this.vertice3.setX(vertice3.getX()+pos);
-        this.vertice3.setX(vertice3.getX()+pos);;
+        this.vertice3.setX(vertice3.getX()+pos);
     }
-
 
     public void desplazarEnEjeY(double pos){
         this.vertice1.setY(vertice1.getY()+pos);

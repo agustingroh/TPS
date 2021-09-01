@@ -1,0 +1,63 @@
+Consulta: 
+* La lista de turnos debe pertenecer al sistema o al peluquero?
+  En nuestro caso supusimos que pertenecia a sistema.	
+
+
+10/10/2021:
+				pelu client hyf
+ |----------------|xxxxxxx|------------|xxxxxxx|---------------|
+0800			  1030 - 1130		   1300    1330			1700
+
+
+12/10/2021:
+				
+ |------------|xxxxxxx|------------------|
+0800			  		  
+
+
+
+
+TurnosAsignados = [ x   x   x    x   x   X    x    x    x    x     X    x    x ]
+
+fecha = 10/10;
+getTurnosDisponibles(LocalDate fecha) {
+	for (turno : turnosAsignados)
+		if (turno.getFecha() == fecha )
+			//aca entro por cada turno asignado para una fecha especifica
+			//las guardo en una lista temporal
+
+	//Agarro la lista con los turnos para ese dia en particular y hago la magia
+
+	return [ [0800, 1000] - [1130, 1630] ]     si cada turno dura 30 mins
+}
+
+[ [0800, 1030] - [1130, 1700] ]     
+
+
+
+
+------------ sistema.java -----------------
+
+
+Lista Peluqueros<Persona>
+
+
+
+public static void main(String[] args) {
+
+	peluqueria.agregarPeluquero(new Persona("Nombre", "Apellido"...));
+	peluqueria.agregarPeluquero(new Persona("Nombre", "Apellido"...));
+	peluqueria.agregarPeluquero(new Persona("Nombre", "Apellido"...));
+	peluqueria.agregarPeluquero(new Persona("Nombre", "Apellido"...));
+
+	peluqueria.getPeluqero(1).getTurnosDisponibles();
+	turnosDisponibles = peluqueria.getTurnosDisponibles(LocalDate fecha);
+
+	print(turnosDisponibles)
+	opcion = scanf()
+
+	turnosDisponibles[opcion]
+
+	peluqueria.asignarTurno(peluqueria.getPeluquero(), Persona cliente, LocalDate turno);
+
+}

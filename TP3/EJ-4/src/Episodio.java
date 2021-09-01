@@ -36,8 +36,10 @@ public class Episodio {
     }
 
     public void setCalificacion(int calificacion) {
-        if(calificacion<1 || calificacion>5)
+        if(calificacion<1 || calificacion>5) {
             System.out.println("La calificacion ingresada es incorrecta");
+            return;
+        }
         this.calificacion = calificacion;
     }
 
