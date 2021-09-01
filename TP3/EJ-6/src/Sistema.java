@@ -13,7 +13,7 @@ public class Sistema {
         */ 
         PuntoGeometrico verticeInicial= new PuntoGeometrico(0,0);
         // Rectangulo 1                (Vertice incial,lado1,lado2)
-        Rectangulo rec1= new Rectangulo (verticeInicial,7,2,"acostado");  
+        Rectangulo rec1= new Rectangulo (verticeInicial,7,3,"acostado");  
 
         // // V1
         // rec1.setVertice1(0, 0);
@@ -49,6 +49,16 @@ public class Sistema {
          System.out.println("Es cuadrado :" + rec2.esCuadrado());
 
         // Comparacion areas rectangulos
-         System.out.println(rec1.compararArea(rec2));        
+        int comparacionArea=0;
+        comparacionArea = rec1.compararArea(rec2);
+        if(comparacionArea==1){
+            System.out.println("El area del rectangulo 1 es mayor");
+        }else if(comparacionArea==-1){
+            System.out.println("El area del rectangulo 1 es menor");
+        }else{
+            System.out.println("Las areas son iguales");
+        }
+          
+
     }
 }

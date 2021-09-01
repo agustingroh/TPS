@@ -3,14 +3,12 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Temporada extends Episodio {
+public class Temporada  {
 
-    List<Episodio> episodios = new ArrayList<Episodio>();
+    private List<Episodio> episodios = new ArrayList<Episodio>();
     private int temp;
 
-    Temporada() {
 
-    }
 
     Temporada(int temp) {
         this.temp = temp;
@@ -41,14 +39,21 @@ public class Temporada extends Episodio {
     public int getTemporada() {
         return this.temp;
     }
-
-   
-    public double promedioDeCalificaciones() {
-        int totalCalificaciones = 0;
+ 
+    public double sumaCalificaciones(){
+        int sumaCalificaciones = 0;
         for (Episodio episodio : this.episodios) {
-            totalCalificaciones += episodio.getCalificacion();
+            sumaCalificaciones += episodio.getCalificacion();
         }
-        return (totalCalificaciones / episodios.size());
+        return sumaCalificaciones;
+    }
+
+    public int cantidadDeEpisodios(){
+        return episodios.size();
+    }
+   
+    public double promedioDeCalificaciones() {       
+        return (this.sumaCalificaciones() / this.cantidadDeEpisodios());
 
     }
 

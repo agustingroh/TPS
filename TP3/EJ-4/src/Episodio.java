@@ -6,14 +6,7 @@ public class Episodio {
     private int calificacion;
     private boolean visto;
 
-
-    Episodio(){
-      
-
-    }
-
-
-
+   
     Episodio(String titulo,String descripcion, int calif,boolean visto){
         this.titulo= titulo;
         this.descripcion = descripcion;

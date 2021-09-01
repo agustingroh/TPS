@@ -73,8 +73,8 @@ class Main {
     public static void main(String[] args) {
         Persona_2 p = new Persona_2(25147123);
         p.setDoB("01-01-1990");
-        p.setName("Perro");
-        p.setSurname("Dawwg");
+        p.setName("Juan");
+        p.setSurname("Test");
         p.setWeigth(90.0);
         p.setHeigth(1.95);        
         System.out.println("Es adulto: " + p.isAdult());

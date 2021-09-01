@@ -15,6 +15,7 @@ class Persona_2 {
     private double heigth;
 
 
+    // No se utiliza
     public Persona_2()  { 
         this.doB = "01-01-2000";
         this.sexo = "F";
@@ -46,7 +47,7 @@ class Persona_2 {
     }
 
     public Persona_2( int dni, String name, String surname, String doB, String sexo, double weigth, double heigth) {
-        this.dni = dni;
+        this.dni = dni;       
         this.name = name;
         this.surname = surname;
         this.doB = doB;

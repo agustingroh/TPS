@@ -1,18 +1,16 @@
-public class Rectangulo {
+public class Rectangulo  {
     private PuntoGeometrico vertice1;
     private PuntoGeometrico vertice2;
     private PuntoGeometrico vertice3;
     private PuntoGeometrico vertice4;
-
+   
     /*
      * A la clase Rectángulo del ejercicio 3 implementarla nuevamente, guardando
      * solo un vértice y las longitudes de los lados. Implementar la misma interfaz
      * que en el ejercicio 3.
      */
 
-    Rectangulo() {
-
-    }
+   
 
     Rectangulo(PuntoGeometrico v, double lado1, double lado2, String direccion) {
         this.setVertices(v, lado1, lado2, direccion);
@@ -20,6 +18,7 @@ public class Rectangulo {
     }
 
     Rectangulo(PuntoGeometrico v1, PuntoGeometrico v2, PuntoGeometrico v3, PuntoGeometrico v4) {
+
         this.vertice1 = v1;
         this.vertice2 = v2;
         this.vertice3 = v3;
