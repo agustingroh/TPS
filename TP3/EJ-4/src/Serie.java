@@ -82,6 +82,10 @@ public class Serie {
         System.out.println(serie1.toString());
         //
 
+    
+        
+       
+
         // Le agrego 3 episodios a la temp 1
         serie1.obtenerTemporada(1).agregarEpisodios(new Episodio("Episodio 1", "Descripcion", 2, true));
         serie1.obtenerTemporada(1).agregarEpisodios(new Episodio("Episodio 2", "Descripcion", 2, true));
