@@ -7,6 +7,23 @@ peluquero se desean cortar. El sistema además de registrar los turnos, debe pod
 el primer turno disponible, también el primero disponible con un determinado
 peluquero. A los clientes frecuentes se les descuenta un 10%. Se considera cliente
 frecuente al que saca turno al menos una vez por mes.
+
 Consejo: Identificar similitudes y diferencias con el establecimiento deportivo.
 Identificar los horarios de atención.
+
 Extra: ¿Qué sucede si un peluquero puede atender a dos clientes a la vez?
+
+
+
+Main en class Peluqueria {
+
+
+Perluqeuria peluqueria = new Peluqueria();
+peluqueria.agregarPeluquero(new Persona(nombre))
+peluqueria.agregarPeluquero()
+peluqueria.agregarPeluquero()
+peluqueria.agregarPeluquero()
+
+peluqeuria.reservarTurno(New Persona(),LocalDate,peluqeria.getPeluqueroLibre);
+}
+

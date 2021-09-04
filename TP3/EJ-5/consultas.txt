@@ -2,6 +2,12 @@ Consulta:
 * La lista de turnos debe pertenecer al sistema o al peluquero?
   En nuestro caso supusimos que pertenecia a sistema.	
 
+* El sistema deberia tener turnos por slots?
+* O podemos usar horarios flexibles? Aca se complica la implementacion
+
+* Se puede implementar slots suficientemente pequenos como de 30 mins
+* Cuando un usuario necesita alguna operacion larga puede reservar 2 slots.30m
+
 
 10/10/2021:
 				pelu client hyf
@@ -10,15 +16,45 @@ Consulta:
 
 
 12/10/2021:
-				
- |------------|xxxxxxx|------------------|
+				8:30 a 9:00    		9:45 a 10:15
+ |------------|xxxxxxx|----------|xxxxxxx|--------|
 0800			  		  
 
 
+12/10/2021:
+				8:30 a 9:00    		9:45 a 10:15
+ |DDD|DDD|xxx|DDD|DDD|DDD|xxx|DDD|
+0800			  		  
 
 
-TurnosAsignados = [ x   x   x    x   x   X    x    x    x    x     X    x    x ]
+13/10/2021:
+	0	1	2	3
+ |---|---|---|---|---|---|xxx|----|
+LocalTime (0800 + index*0.5)					1700
 
+/ * Aca esta la magia * /
+Lista LocalDate = [x,x,x,x,x,x,x,x,x,x,x,x,x]
+Array Turnos [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+/ * Aca esta la magia * /
+
+
+class Dia
+ private Appointments[] shifts = new Turn[16];
+array Turno
+{
+	10/10/2021: [x, x, x, x, x]
+	11/10/2021: [x, x, x, x, x]
+
+}
+
+TurnosAsignados = [ x   x   x ]
+1- Obtener todos los turnos de la misma fecha-> se guarda en una lista temporal
+2- Ordenamos todos los turnos de la lista temporal de manera creciente en base a la fecha de inicio
+3- 
+
+
+[Turno 1, Turno2] = 30m 
+ 
 fecha = 10/10;
 getTurnosDisponibles(LocalDate fecha) {
 	for (turno : turnosAsignados)
@@ -26,7 +62,9 @@ getTurnosDisponibles(LocalDate fecha) {
 			//aca entro por cada turno asignado para una fecha especifica
 			//las guardo en una lista temporal
 
+	
 	//Agarro la lista con los turnos para ese dia en particular y hago la magia
+	// Luego la ordeno en base al primer indice
 
 	return [ [0800, 1000] - [1130, 1630] ]     si cada turno dura 30 mins
 }

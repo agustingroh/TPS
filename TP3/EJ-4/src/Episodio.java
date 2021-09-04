@@ -51,7 +51,11 @@ public class Episodio {
         this.visto = visto;
     }
 
-    
-
+    public static void main(String[] args) {
+        Episodio episodio1 = new Episodio("Episodio piloto", "Descripcion episodio piloto", 4, false);
+        System.out.println(episodio1.getTitulo());
+        episodio1.setTitulo("nuevo titulo");
+        System.out.println(episodio1.getTitulo());
+    }
 
 }
