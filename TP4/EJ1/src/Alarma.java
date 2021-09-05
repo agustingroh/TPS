@@ -22,6 +22,7 @@ public class Alarma {
     private boolean seDetectoMovimiento;
     private Timbre timbre;
     private boolean activada;
+    private String nombre;
 
     public Alarma() {
         this.seRompioVidrio = false;
@@ -30,6 +31,11 @@ public class Alarma {
         this.seDetectoMovimiento = false;
         this.activada = false;
         this.timbre = new Timbre();
+        this.nombre = "X-28";
+    }
+
+    public String  getNombre(){
+        return this.nombre;
     }
 
     private void setearSensores() {
@@ -139,8 +145,18 @@ public class Alarma {
 
     }
 
+
+    public String toString() {
+        return "El nombre de la alarma es: " + this.getNombre();
+    }
+
     public static void main(String[] args) {
         Alarma alarma1 = new Alarma();
+        Alarma alarma2 = new Alarma();
+
+        System.out.println(alarma1);
+        System.out.println(alarma2);
+
         alarma1.activar();
         Alarma.obtenerEstadoGeneral(alarma1);
         alarma1.desactivar();
