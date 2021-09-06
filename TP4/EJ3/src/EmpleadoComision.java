@@ -10,7 +10,7 @@ public class EmpleadoComision extends EmpleadoContratado{
     }
 
     private double getGananciaExtra(){
-      return (double) this.cantidadVentas * this.porcentaje;
+      return ((super.getSalarioSemanal() * this.porcentaje / 100) * (double) this.cantidadVentas);
     }
 
     public double getSalarioSemanal(){

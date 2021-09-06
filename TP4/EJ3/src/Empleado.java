@@ -45,7 +45,7 @@ public class Empleado {
         
 
 
-        EmpleadoComision empleado4 = new EmpleadoComision("Omar","Groh",45000,2,5);
+        EmpleadoComision empleado4 = new EmpleadoComision("Omar","Groh",45000,2,1.5);
         Empleado.salarioEmpleado(empleado4);
     }
 }
