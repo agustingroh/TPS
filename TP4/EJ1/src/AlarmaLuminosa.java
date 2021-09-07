@@ -6,6 +6,8 @@ public class AlarmaLuminosa extends Alarma {
     }
 
     public void comprobar() {
+        // se comprueba el estado de los sensores 
+        // y se activa la alarma sonora si alguno de los sensores detecto movimiento
         super.comprobar();
         if (super.estado()) {
             luz.encender();

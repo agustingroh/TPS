@@ -9,6 +9,9 @@ Consulta:
 * Cuando un usuario necesita alguna operacion larga puede reservar 2 slots.30m
 
 
+La peluqueria tiene una lista de Peluqueros
+
+
 10/10/2021:
 				pelu client hyf
  |----------------|xxxxxxx|------------|xxxxxxx|---------------|

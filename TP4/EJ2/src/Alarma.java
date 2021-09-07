@@ -99,6 +99,7 @@ public class Alarma {
         return false;
     }
 
+    // TO DO devolver una lista de sensores
     public void obtenerNombreDelSensorActivado(){
         for (Sensor sensor : sensores) {
             if (sensor.isActivado()) {
@@ -129,16 +130,16 @@ public class Alarma {
         System.out.print("\n");
     }
 
-    public static void obtenerEstadoGeneral(Alarma alarma) {
-        // Ejemplo de binding dinamico
+    public void obtenerEstadoGeneral() {
+        
         System.out.println("ESTADO DE LA GENERAL DE LA ALARMA");
-        alarma.comprobar();       
-        if (alarma.activada())
+        this.comprobar();       
+        if (this.activada())
             System.out.println("Estado de la alarma: activada");
         else
             System.out.println("Estado de la alarma: desactivada");
 
-        System.out.println("La alarma esta sonando: " + alarma.estaSonando());
+        System.out.println("La alarma esta sonando: " + this.estaSonando());
 
     }
 
@@ -154,19 +155,23 @@ public class Alarma {
    
 
         alarma1.agregarSensor(new Sensor("Puerta de ingreso"));
-        alarma1.agregarSensor(new Sensor("ventana pasillo"));
+        alarma1.agregarSensor(new Sensor("ventana pasillo"));   
         alarma1.agregarSensor(new Sensor("Quincho"));
 
         alarma1.listaDeSensores();
     
 
          alarma1.activar();
+
+         // Abrieron la puerta de ingreso
          alarma1.activarSensor(0);
-         Alarma.obtenerEstadoGeneral(alarma1);
+         alarma1.activarSensor(1);
+
+         alarma1.obtenerEstadoGeneral();
 
           alarma1.desactivar();
           alarma1.activarSensor(0);
-          Alarma.obtenerEstadoGeneral(alarma1);
+          alarma1.obtenerEstadoGeneral();
 
 
 

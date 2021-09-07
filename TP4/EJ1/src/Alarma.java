@@ -76,7 +76,6 @@ public class Alarma {
         } else {
             timbre.silenciar();
         }
-
     }
 
     public boolean estaSonando() {
@@ -171,7 +170,7 @@ public class Alarma {
 
         AlarmaLuminosa alarmaLuminosa1 = new AlarmaLuminosa();
 
-        AlarmaLuminosa.obtenerEstadoGeneral(alarmaLuminosa1);
+        Alarma.obtenerEstadoGeneral(alarmaLuminosa1);
         alarmaLuminosa1.activar();
 
         alarmaLuminosa1.setSeAbrioVentana(true);
