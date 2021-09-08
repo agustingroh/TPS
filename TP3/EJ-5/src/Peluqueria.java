@@ -37,15 +37,18 @@ public class Peluqueria {
         return turnosDisponibles;
     }
 
-    private Persona obtenerPeluqueroPorNombre(String nombre){
+    private Peluquero obtenerPeluqueroPorNombre(String nombre){
         
         for (Peluquero peluquero : peluqueros) {
             if(peluquero.getNombre()==nombre)
             return peluquero;
     }
+}
 
-    public void agregarTurno(){
 
+
+    public void agregarTurno(String peluquero,LocalDate fecha, localDateTime hora){
+        Peluquero peluquero = this.obtenerPeluqueroPorNombre(peluquero);
     }
 
     
