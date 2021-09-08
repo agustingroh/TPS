@@ -37,20 +37,25 @@ public class Peluqueria {
         return turnosDisponibles;
     }
 
-    private Peluquero obtenerPeluqueroPorNombre(String nombre){
-        
-        for (Peluquero peluquero : peluqueros) {
-            if(peluquero.getNombre()==nombre)
-            return peluquero;
-    }
-}
+    private Peluquero obtenerPeluqueroPorNombre(String nombre) {
 
+        for (Peluquero peluquero : this.peluqueros) {
+            if (peluquero.getNombre() == nombre)
+                return peluquero;
 
-
-    public void agregarTurno(String peluquero,LocalDate fecha, localDateTime hora){
-        Peluquero peluquero = this.obtenerPeluqueroPorNombre(peluquero);
+        }
+        return null;
     }
 
+    public void agregarTurno(Persona cliente, String peluquero, LocalDate fecha, LocalTime hora) {
+        Peluquero pel = this.obtenerPeluqueroPorNombre(peluquero); 
+        if (pel != null) pel.agregarTurno(cliente, fecha, hora); // auto-fix :)
+
+    }
+    //hermoso, esto corre. No hace nada pero corre jaja.
+    // oy a probar la agenda
+
+    //Por?
     
 
     public static void main(String[] args) {

@@ -9,20 +9,15 @@ public class Peluquero extends Persona{
     public Peluquero(String nombre,String apellido){        
         super(nombre,apellido);
         this.libroDeTurnos = new LibroDeTurnos(LocalTime.parse("08:00:00"), LocalTime.parse("17:00:00"));
-   
-        
     }
 
 
-    public void agregarTurno(Persona cliente, LocalDate date, LocalTime initTime, LocalTime endTime){
-        
-        libroDeTurnos.agregarTurno(cliente, date, initTime, endTime);
-    }
-
+    public void agregarTurno(Persona cliente, LocalDate date, LocalTime initTime) {     
+        libroDeTurnos.agregarTurno(cliente, date, initTime,initTime.plusMinutes(30)); 
+    }   
+    
 
      public  ArrayList<Turno>  getTurnosDisponibles(LocalDate fecha){
-
-
          return libroDeTurnos.obtenerTurnosDisponibles(fecha);
      }
  

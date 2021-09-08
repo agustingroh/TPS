@@ -12,13 +12,13 @@ public class Turno {
         this.cliente = cliente;
         this.date = date;
         this.initTime = initTime;
-        this.finishTime = finishTime;
+        this.finishTime = endTime;
     }
     
     public Turno(LocalDate date, LocalTime initTime, LocalTime endTime) {
         this.date = date;
         this.initTime = initTime;
-        this.finishTime = finishTime;
+        this.finishTime = endTime;
     }
 
     public LocalDate getDate() {
@@ -41,6 +41,12 @@ public class Turno {
         this.finishTime = finishTime;
     }
     
+
+    @Override
+    public String toString() {
+        String str = "[" + this.initTime + "-" + this.finishTime + "]";
+        return str;
+    }
 
 
 }
