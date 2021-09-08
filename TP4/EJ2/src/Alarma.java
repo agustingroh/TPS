@@ -76,6 +76,15 @@ public class Alarma {
         this.timbre.silenciar();
     }
 
+    public void activarTimbre(){
+        timbre.hacerSonar();
+    }
+
+    public void desactivarTimbre(){
+        timbre.silenciar();
+    }
+
+
     public void activar() {
         this.setearSensores();
         this.activada = true;
@@ -100,22 +109,17 @@ public class Alarma {
     }
 
     // TO DO devolver una lista de sensores
-    public void obtenerNombreDelSensorActivado(){
+    public List <String> obtenerListaDeSensoresActivados(){
+       List <String> sensoresActivados = new ArrayList<String>();
         for (Sensor sensor : sensores) {
             if (sensor.isActivado()) {
-               System.out.println("Sensor activado: " + sensor.getNombre() + " ID:" + sensor.obtenerId());  
+                sensoresActivados.add(sensor.getNombre());                
             }
-        }   
+        }  
+        return sensoresActivados; 
     }
 
-    public void comprobar() {
-        if (this.estado()) {
-            timbre.hacerSonar();
-            this.obtenerNombreDelSensorActivado();
-        } else {
-            timbre.silenciar();
-        }
-    }
+
 
     public boolean estaSonando() {
         return this.timbre.getSonar();
@@ -124,24 +128,22 @@ public class Alarma {
 
 
     public void listaDeSensores(){
+        
         for (Sensor sensor : sensores) {
             System.out.println("Zona:" + sensor.getNombre() + " ID: " + sensor.obtenerId());
         }
         System.out.print("\n");
     }
 
-    public void obtenerEstadoGeneral() {
-        
-        System.out.println("ESTADO DE LA GENERAL DE LA ALARMA");
-        this.comprobar();       
-        if (this.activada())
-            System.out.println("Estado de la alarma: activada");
-        else
-            System.out.println("Estado de la alarma: desactivada");
 
-        System.out.println("La alarma esta sonando: " + this.estaSonando());
-
+    public boolean comprobar() {
+        if (this.estado() && this.activada) {           
+            return true;            
+        } else {            
+            return false;
+        }
     }
+   
 
 
 
@@ -166,23 +168,50 @@ public class Alarma {
          // Abrieron la puerta de ingreso
          alarma1.activarSensor(0);
          alarma1.activarSensor(1);
-
-         alarma1.obtenerEstadoGeneral();
+   
+         if(alarma1.comprobar()){
+             alarma1.activarTimbre();
+             System.out.println("La alarma se encuentra activada");
+             System.out.println("Esta sonando: " + alarma1.estaSonando());
+             List <String> sensoresActivados = alarma1.obtenerListaDeSensoresActivados();
+             for (String sensor : sensoresActivados) {
+                 System.out.println("La zona activada es: " + sensor);
+             }             
+         }else{
+            System.out.println("La alarma se encuentra desactivada");
+            System.out.println("Esta sonando: " + alarma1.estaSonando());
+         }
 
           alarma1.desactivar();
           alarma1.activarSensor(0);
-          alarma1.obtenerEstadoGeneral();
+          
 
 
 
         System.out.println("***********************Alarma luminosa**********************");
 
-        // AlarmaLuminosa alarmaLuminosa1 = new AlarmaLuminosa();
+         AlarmaLuminosa alarmaLuminosa1 = new AlarmaLuminosa();
 
-        // AlarmaLuminosa.obtenerEstadoGeneral(alarmaLuminosa1);
-        // alarmaLuminosa1.activar();
+         
+         alarmaLuminosa1.activar();
 
-      
+        if(alarmaLuminosa1.comprobar()){
+            alarmaLuminosa1.activarTimbre();
+            System.out.println("La luz se encuentra encendida: " + alarmaLuminosa1.estadoDeLaLuz()); 
+            System.out.println("La alarma se encuentra activada");
+            System.out.println("Esta sonando: " + alarmaLuminosa1.estaSonando());
+            List <String> sensoresActivados = alarmaLuminosa1.obtenerListaDeSensoresActivados();
+            for (String sensor : sensoresActivados) {
+                System.out.println("La zona activada es: " + sensor);
+            }             
+        }else{
+           System.out.println("La alarma se encuentra desactivada");
+           System.out.println("Esta sonando: " + alarmaLuminosa1.estaSonando());
+        }
+
+
+         alarmaLuminosa1.desactivar();
+         alarmaLuminosa1.activarSensor(0);
 
         // AlarmaLuminosa.obtenerEstadoGeneral(alarmaLuminosa1);
 
