@@ -1,8 +1,10 @@
 package app;
 
 public class Persona {
+    
     private String nombre;
     private String apellido;
+
 
     public Persona(String nombre, String apellido){
         this.nombre=nombre;
@@ -24,5 +26,7 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
+public static void main(String[] args) {
+    System.out.println("Hola" +  args[0]);
+}
 }

@@ -24,6 +24,8 @@ public class App {
 
 
     public static void main(String[] args) {
+    	System.out.println("Hola " + args[0]);
+    	/*
         App app = new App();
         System.out.println("n- Nuevo usuario");
         System.out.println("l- mostrar listado de personas");
@@ -33,7 +35,8 @@ public class App {
         System.out.println("P) Print ship stacks");
         System.out.println("S) Search for cargo <name>");
         System.out.println("q - quit");
-
+*/
+    	/*
         String options = null;
         Scanner scan = new Scanner(System.in); // Capturing the input
         do {
@@ -75,5 +78,5 @@ public class App {
             }
         } while (!options.equals("Q")); // quitting the program
     }
-
+*/
 }

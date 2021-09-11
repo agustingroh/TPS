@@ -1,0 +1,3 @@
+
+
+- Las cualidades deberian ser clases que heredan de caulidad o atributos?
