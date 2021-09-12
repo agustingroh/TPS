@@ -20,7 +20,7 @@ public class CualidadLeal extends Cualidad{
     }
 
 
-
+@Override
     public boolean equals(Object o){
         CualidadLeal aux = (CualidadLeal)o;
             return  this.estado == aux.isEstado();
