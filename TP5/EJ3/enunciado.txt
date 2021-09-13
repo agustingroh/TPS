@@ -13,7 +13,9 @@ minerales de interés primario para la cooperativa, y “comunes” cuando conti
 minerales secundarios en la composición de la tierra. La cooperativa debe poder consultar si
 un lote es común o especial.
 Implementar una solución orientada a objetos para este problema que permita
-determinar: 1) qué cereales pueden sembrarse en un determinado lote
+determinar: 
+1) qué cereales pueden sembrarse en un determinado lote
 2) en qué lotes se puede sembrar un determinado cereal
 3) determinar si un lote dado es “especial” o “común”.
 */
+
