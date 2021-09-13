@@ -11,15 +11,16 @@ public class Cooperativa {
         this.lotes = new ArrayList<Lote>();
     }
 
-    public boolean tiposDeCerealesSem(Lote lote, Cereal c) {
-        return lote.cerealSem(c);
+    public boolean puedeSembrarse(Lote lote, Cereal c) {
+        return c.esUnLoteApto(lote);
+        
     }
 
   
     public ArrayList<Lote> lotesPorCereal(Cereal cereal) {
         ArrayList<Lote> lotesAptos = new ArrayList<Lote>();
         for (Lote lote : lotes) {
-           if(lote.cerealSem(cereal))
+           if(cereal.esUnLoteApto(lote))
                 lotesAptos.add(lote);
         }
         return lotesAptos;
@@ -31,7 +32,7 @@ public class Cooperativa {
 
 
     public boolean tipoLote(Lote l,ArrayList<Mineral> m){
-        return l.tipoLote(m);
+        return l.tieneMineral(m);
 
     }
 
@@ -68,10 +69,10 @@ public class Cooperativa {
         cooperativa.agregarLote(l1);
 
 
-        // Tipo de cereal segun lote
-        System.out.println("Cereal por lote," + " Cereal-> grano grueso: "  + cooperativa.tiposDeCerealesSem(l1,cereal1));
+        // Comprobar si se puede sembrar un cereal en un determinado lote
+        System.out.println("Cereal por lote," + " Cereal-> grano grueso: "  + cooperativa.puedeSembrarse(l1,cereal1));
         l1.agregarMineral(azufre);
-        System.out.println("Cereal por lote," + " Cereal-> pasturas: "  + cooperativa.tiposDeCerealesSem(l1,cereal3));
+        System.out.println("Cereal por lote," + " Cereal-> pasturas: "  + cooperativa.puedeSembrarse(l1,cereal3));
       
 
 

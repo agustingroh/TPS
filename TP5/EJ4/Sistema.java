@@ -10,3 +10,16 @@ fijo puede variar para cada contribuyente.
 - Contribuyente comerciante: abona el 50% del monto fijo y el 3.5% del monto
 facturado en concepto de ventas.
 - Contribuyente programador: abona el 20 */
+
+
+/* Ciudad
+
+*/
+
+/*Persona
+*/
+
+/* Contribuyente extends Persona
+
+comportamiento -> simple, comerciante,programador
+*/

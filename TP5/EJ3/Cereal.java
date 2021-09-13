@@ -29,7 +29,7 @@ public class Cereal {
        return this.exigencia.exigencia(l, this);
     }
 
-
+    
 
     public void agregarListaDeMinerales(List<Mineral> minerales) {
         this.minerales.addAll(minerales);

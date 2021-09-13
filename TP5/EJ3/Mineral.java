@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 // Se deberia crear una clase mineral primario y secundario?
 public class Mineral {
@@ -23,6 +24,7 @@ public class Mineral {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
 
     @Override
     public boolean equals(Object o){
