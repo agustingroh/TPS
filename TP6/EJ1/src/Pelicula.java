@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pelicula extends Producto {
@@ -5,16 +6,16 @@ public class Pelicula extends Producto {
     private int cantidadMin;
     private ArrayList<Cliente> clientes;
 
-    public Pelicula(String nombre,int cantidad) {
-        this(nombre,cantidad, 1);
+    public Pelicula(String nombre, int cantidad) {
+        this(nombre, cantidad, 1);
     }
 
-    public Pelicula(String nombre,int cantidad, int cantidadMinima) {
+    public Pelicula(String nombre, int cantidad, int cantidadMinima) {
         super(nombre);
         this.cantidad = cantidad;
         this.cantidadMin = cantidadMinima;
         this.clientes = new ArrayList<Cliente>();
-        
+
     }
 
     private void descontar() {
@@ -41,7 +42,19 @@ public class Pelicula extends Producto {
         return false;
     }
 
-    public int getCantidad(){
+    public int getCantidad() {
         return this.cantidad;
     }
+
+    public ArrayList<Cliente> obtenerClienteConVencimiento() {
+        ArrayList<Cliente> clientesConDeuda = new ArrayList<Cliente>();
+        LocalDate now = LocalDate.now();
+        for (Cliente cliente : clientes) {
+            if (cliente.getFechaDeDevolucion().compareTo(now) < 0)
+                clientesConDeuda.add(cliente);
+
+        }
+        return clientesConDeuda;
+    }
+
 }
