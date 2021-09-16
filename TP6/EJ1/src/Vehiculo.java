@@ -33,4 +33,14 @@ public class Vehiculo extends Producto {
         return null;
     }
 
+    public boolean contieneCliente(Cliente c){
+        return  this.cliente.equals(c);
+      }
+
+
+      public String toString(){
+          return "Producto: " + super.getNombre();
+      }
+  
+
 }

@@ -58,6 +58,16 @@ public class VideoClub {
 
     }
 
+    public ArrayList<Producto> listaDeproductosPorCliente(Cliente c) {
+        ArrayList<Producto> productosCliente = new ArrayList<Producto>();
+        for (Producto producto : productos) {
+            if(producto.contieneCliente(c))
+            productosCliente.add(producto);
+        }
+        return productosCliente;
+
+    }
+
     public static void main(String[] args) {
 
         VideoClub videoClub = new VideoClub();
@@ -73,7 +83,7 @@ public class VideoClub {
 
         if (videoClub.sePuedeAlquilar(p1)) {
             videoClub.alquilar(p1, videoClub.obtenerCliente("Juan"), LocalDate.parse("2021-09-15"));
-            videoClub.alquilar(v1, videoClub.obtenerCliente("Pedro"), LocalDate.parse("2021-09-15"));
+            videoClub.alquilar(v1, videoClub.obtenerCliente("Pedro"), LocalDate.parse("2021-09-15"));            
         } else
             System.out.println("No se puede alquilar");
 
@@ -93,6 +103,15 @@ public class VideoClub {
         } else {
             System.out.println("No hay clientes con deudas");
         }
+
+
+
+        System.out.println("**********Productos de un cliente************");
+        System.out.println(c1); 
+        for (Producto producto : videoClub.listaDeproductosPorCliente(c1)) {
+            System.out.println(producto);
+        }
+       
 
     }
 }

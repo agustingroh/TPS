@@ -57,4 +57,12 @@ public class Pelicula extends Producto {
         return clientesConDeuda;
     }
 
+    public boolean contieneCliente(Cliente c){
+      return  this.clientes.contains(c);
+    }
+
+    public String toString(){
+        return "Producto: " + super.getNombre();
+    }
+
 }
