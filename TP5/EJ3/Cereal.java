@@ -5,61 +5,38 @@ import java.util.List;
 // Deberia ser una clase abstracta? y que cada "Cereal" posea sus propios minerales? 
 // no se repetiria creando una clase abstracta ?
 public class Cereal {
-    protected List<Mineral> minerales;
+    protected List<String> minerales;
     private ArrayList<String> granos;
-    private String nombre;
-    private Exigencia exigencia;
+    private String nombre;   
 
-    public Cereal(List<Mineral> minerales, List<String> granos,String nombre) {
-        this(minerales,granos,nombre,new ExigenciaNormal());       
-    }
-
-
-    public Cereal(List<Mineral> minerales, List<String> granos,String nombre, Exigencia exigencia) {
-        this.minerales = new ArrayList<Mineral>();
+    public Cereal(List<String> minerales, List<String> granos, String nombre) {
+        this.minerales = new ArrayList<String>();
         this.granos = new ArrayList<String>();
-        this.minerales.addAll(minerales);   
+        this.minerales.addAll(minerales);
         this.granos.addAll(granos);
-        this.nombre=nombre;        
-        this.exigencia= exigencia;
+        this.nombre = nombre;
+    }
+
+    public boolean esUnLoteApto(Lote l) {
+        for (String mineral : this.minerales) {
+            if (!l.contineMinerales(mineral))
+                return false;
+        }
+        return true;
     }
 
 
-    public boolean esUnLoteApto(Lote l){
-       return this.exigencia.exigencia(l, this);
-    }
-
-    
-
-    public void agregarListaDeMinerales(List<Mineral> minerales) {
+    public void agregarListaDeMinerales(List<String> minerales) {
         this.minerales.addAll(minerales);
     }
 
-    public boolean contieneMinerales(Mineral m){
-        return this.minerales.contains(m);
-    }
-
-    public boolean contieneMinerales(ArrayList<Mineral> m) {
-        for (Mineral mineral : m) {
-            if (minerales.contains(mineral))
-                return true;
-        }
-        return false;
-    }
-
-    public List<Mineral> getMinerales() {
-        return this.minerales;
-    }
-
-    public void setMinerales(List<Mineral> minerales) {
-        this.minerales = minerales;
-    }
+  
 
     @Override
-    public String toString(){
-        String aux="";
+    public String toString() {
+        String aux = "";
         for (String string : granos) {
-            aux+=string + ",";
+            aux += string + ",";
         }
         return "Granos: " + aux;
     }

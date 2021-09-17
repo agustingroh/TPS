@@ -5,15 +5,33 @@ import java.util.List;
 public class Cooperativa {
     private ArrayList<Lote> lotes;
     private String nombre;
+    private ArrayList <String> mineralesPrimarios;
 
-    public Cooperativa(String nombre) {
+    public Cooperativa(String nombre,ArrayList<String>mineralesPrimarios) {
         this.nombre = nombre;
         this.lotes = new ArrayList<Lote>();
+        this.mineralesPrimarios = new ArrayList<String>();
+        this.mineralesPrimarios.addAll(mineralesPrimarios);
+   
     }
 
-    public boolean puedeSembrarse(Lote lote, Cereal c) {
+    public void agregarListaDeMineralesPrimarios(ArrayList<String> minerales){
+      this.mineralesPrimarios.addAll(minerales);
+    }
+
+
+    public boolean sePuedeSembrarUnCerealEnUnlote(Lote lote, Cereal c) {
         return c.esUnLoteApto(lote);
         
+    }
+
+    public  ArrayList <Lote> lotesQueEnLosQueSePuedeSembrarUnDeterminadoCereal(Cereal c){
+        ArrayList <Lote> lotesAptosParaElCereal = new ArrayList<Lote>();
+        for (Lote lote : this.lotes) {           
+           if(c.esUnLoteApto(lote)) lotesAptosParaElCereal.add(lote);
+        }
+
+        return lotesAptosParaElCereal;
     }
 
   
@@ -31,76 +49,61 @@ public class Cooperativa {
     }
 
 
-    public boolean tipoLote(Lote l,ArrayList<Mineral> m){
-        return l.tieneMineral(m);
-
+    public boolean tipoDelote(Lote l){
+        for (String m : this.mineralesPrimarios) {
+           if(!l.contineMinerales(m))return false;
+        }
+        return true;
     }
 
+
+
+  
+
     public static void main(String[] args) {
-        Cooperativa cooperativa = new Cooperativa("Test");
+        ArrayList mineralesPrimarios = new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre"));
+        Cooperativa cooperativa = new Cooperativa("Test",mineralesPrimarios);
 
-        ArrayList<Mineral> minerales = new ArrayList<Mineral>();
+        Cereal cosechaGruesa = new Cereal(new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre")),new ArrayList<String>(Arrays.asList("girasol", "maiz")), "Grano de cosecha gruesa");
 
-        Mineral azufre = new Mineral("azufre",Mineral.PRIMARIO);
-        Mineral cobalto = new Mineral("cobalto",Mineral.SECUNDARIO);
-        minerales.add(azufre);
-        minerales.add(cobalto);
-
-        List<String> granoGrueso = Arrays.asList( "Girasol", "Maiz");
-        List<String> granoFino = Arrays.asList("trigo", "avena");
-        List<String> pastura = Arrays.asList("alfalfa", "trébol", "subterráneo");        
-           
-        Cereal cereal1 = new Cereal( minerales,granoGrueso,"Grano grueso");
-        Cereal cereal2 = new Cereal( minerales,granoFino,"Grano fino");
-        Cereal cereal3 = new Cereal( minerales,pastura,"pastura",new ExigenciaPastura());
-
-        ArrayList <Cereal> listaCereales = new ArrayList<Cereal>();
-        listaCereales.add(cereal1);
-        listaCereales.add(cereal2);
-        listaCereales.add(cereal3);
+        Cereal cosechaFina = new Cereal(new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre","fluorita")),new ArrayList<String>(Arrays.asList("trigo", "avena")), "Grano de cosecha fina");
 
 
+        Cereal pastura = new Pastura(new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre","fluorita")),new ArrayList<String>(Arrays.asList("trigo", "avena")), "pastura",50);
 
+        // Lotes
+        Lote l1 = new Lote(new ArrayList<String>(Arrays.asList("calcita")),51);        
+        Lote l2 = new Lote(new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre")),48);
+        Lote l3 = new Lote(new ArrayList<String>(Arrays.asList("calcita", "yeso","azufre","fluorita")),52);
 
-        ArrayList<Mineral> mineralesLote = new ArrayList<Mineral>();
-        mineralesLote.add(cobalto);
-       
-        Lote l1 = new Lote(mineralesLote,50);
         cooperativa.agregarLote(l1);
+        cooperativa.agregarLote(l2);
+        cooperativa.agregarLote(l3);
+
+        // ***************************** TEST *********************************//
+        // TEST-> SE PUEDE SEMBRAR UN CEREAL EN UN DETERMINADO LOTE
+        System.out.println("Se puede sembrar el cereal en el lote : " + cooperativa.sePuedeSembrarUnCerealEnUnlote(l1, cosechaGruesa)); 
+
+        System.out.println("Se puede sembrar el cereal en el lote : " + cooperativa.sePuedeSembrarUnCerealEnUnlote(l2, cosechaGruesa)); 
+
+        // Pastura (checkea cantidad de hectareas ademas de minerales)
+        System.out.println("Se puede sembrar pastura en el lote : " + cooperativa.sePuedeSembrarUnCerealEnUnlote(l3, pastura)); 
 
 
-        // Comprobar si se puede sembrar un cereal en un determinado lote
-        System.out.println("Cereal por lote," + " Cereal-> grano grueso: "  + cooperativa.puedeSembrarse(l1,cereal1));
-        l1.agregarMineral(azufre);
-        System.out.println("Cereal por lote," + " Cereal-> pasturas: "  + cooperativa.puedeSembrarse(l1,cereal3));
-      
+        // TIPO DE LOTE
+        if(cooperativa.tipoDelote(l1))
+        System.out.println("Lote especial");
+        else
+        System.out.println("Lote comun");
 
 
-        ArrayList<Lote> lotesAptos = new ArrayList<Lote>();
-        lotesAptos = cooperativa.lotesPorCereal(cereal3);
-        System.out.println("Lotes aptos para sembrar cereales de pastura->" + lotesAptos);
-    
-
-
-        ArrayList<Mineral> mineralesPrimarios = new ArrayList<Mineral>();
-
-        Mineral clorita = new Mineral("clorita",Mineral.PRIMARIO);
-      
-        mineralesPrimarios.add(clorita);
         
-
-        // Tipo de lote
- 
-        if(cooperativa.tipoLote(l1, mineralesPrimarios)){
-            System.out.println("Lote especial");
-        }else{
-            System.out.println("Lote comun");
+    // 2) en qué lotes se puede sembrar un determinado cereal
+        ArrayList <Lote> lotesAptos = new ArrayList<Lote>();
+        lotesAptos = cooperativa.lotesQueEnLosQueSePuedeSembrarUnDeterminadoCereal(cosechaFina);
+        for (Lote lote : lotesAptos) {
+            System.out.println("Numero de lote:" + lote);
         }
-       
-
- 
-      
-
     }
 
 }
