@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Pelicula extends Producto {
     private int cantidad;
     private int cantidadMin;
-    private ArrayList<Cliente> clientes;
+    
 
     public Pelicula(String nombre, int cantidad) {
         this(nombre, cantidad, 1);
@@ -14,7 +14,7 @@ public class Pelicula extends Producto {
         super(nombre);
         this.cantidad = cantidad;
         this.cantidadMin = cantidadMinima;
-        this.clientes = new ArrayList<Cliente>();
+     
 
     }
 
@@ -23,16 +23,12 @@ public class Pelicula extends Producto {
             this.cantidad = this.cantidad - 1;
     }
 
-    public void agregarCliente(Cliente c) {
-        if (this.cantidad > this.cantidadMin)
-            clientes.add(c);
-    }
 
-    public void alquilar(Cliente c) {
-        this.descontar();
-        if (clientes.size() < this.cantidad)
-            this.clientes.add(c);
 
+    public void alquilar() {
+        if (this.sePuedeAlquilar()) {            
+                this.descontar();
+        }
     }
 
     public boolean sePuedeAlquilar() {
@@ -46,22 +42,11 @@ public class Pelicula extends Producto {
         return this.cantidad;
     }
 
-    public ArrayList<Cliente> obtenerClienteConVencimiento() {
-        ArrayList<Cliente> clientesConDeuda = new ArrayList<Cliente>();
-        LocalDate now = LocalDate.now();
-        for (Cliente cliente : clientes) {
-            if (cliente.getFechaDeDevolucion().compareTo(now) < 0)
-                clientesConDeuda.add(cliente);
+   
 
-        }
-        return clientesConDeuda;
-    }
+  
 
-    public boolean contieneCliente(Cliente c){
-      return  this.clientes.contains(c);
-    }
-
-    public String toString(){
+    public String toString() {
         return "Producto: " + super.getNombre();
     }
 

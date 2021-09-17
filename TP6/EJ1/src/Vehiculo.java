@@ -2,41 +2,39 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Vehiculo extends Producto {
-    private Cliente cliente;
     private double kms;
     private String patente;
+    private boolean alquilado;
+
 
     public Vehiculo(String nombre, double kms, String patente) {
         super(nombre);
         this.kms = kms;
         this.patente = patente;
+        this.alquilado = false;
     }
 
     public boolean sePuedeAlquilar() {
-        if (this.cliente == null)
-            return true;
+        if(this.alquilado!=true) return true;
 
         return false;
+         
     }
 
-    public void alquilar(Cliente c) {
-        this.cliente = c;
+    public void alquilar(){
+        this.alquilado=true;
     }
 
-    public ArrayList<Cliente> obtenerClienteConVencimiento() {
-        ArrayList<Cliente> clientesConDeuda = new ArrayList<Cliente>();
-        LocalDate now = LocalDate.now();
-        if (this.cliente.getFechaDeDevolucion().compareTo(now) < 0) {
-            clientesConDeuda.add(this.cliente);
-            return clientesConDeuda;
-        }
-        return null;
-    }
 
-    public boolean contieneCliente(Cliente c){
-        return  this.cliente.equals(c);
-      }
 
+
+// TO DO
+// Que se deberia hacer en este caso que tiene un solo cliente como maximo?
+// Deberiamos mover el codigo a producto? y crear un ArrayList en Vehiculo que al momento de alquilar se checkee la cantidad <1
+
+    
+
+  
 
       public String toString(){
           return "Producto: " + super.getNombre();

@@ -14,6 +14,9 @@ public class VideoClub {
 
     ArrayList<Cliente> clientes;
     ArrayList<Producto> productos;
+   
+
+
 
     public VideoClub() {
         this.clientes = new ArrayList<Cliente>();
@@ -21,8 +24,15 @@ public class VideoClub {
     }
 
     public void alquilar(Producto p, Cliente c, LocalDate fecha) {
-        p.alquilar(c);
-        c.setFechaDevolucion(fecha);
+        if(p.sePuedeAlquilar()) {             
+            p.alquilar(); 
+            c.agregarProductoAlquilado(p,fecha);
+        }       
+       
+    }
+
+    public ArrayList<Producto> productosAlquiladosPorCliente(Cliente c){
+        return c.obtenerListaDeProductosAlquilados();
     }
 
     public boolean sePuedeAlquilar(Producto p) {
@@ -45,28 +55,19 @@ public class VideoClub {
         return null;
     }
 
-    public ArrayList<Cliente> obtenerClientesItemsVencidos() {
-        ArrayList<Cliente> clientesConDeudas = new ArrayList<Cliente>();
-        ArrayList<Cliente> aux = new ArrayList<Cliente>();
-        for (Producto producto : productos) {
-            aux = producto.obtenerClienteConVencimiento();
-            if (aux != null) {
-                clientesConDeudas.addAll(aux);
-            }
+    public ArrayList<Cliente> obtenerClientesConAlquileresVencido(){
+        ArrayList <Cliente> clientesConProductosVencidos = new ArrayList<Cliente>();
+        for (Cliente cliente : this.clientes) {
+           if(cliente.tieneProductosQueDevolver()) clientesConProductosVencidos.add(cliente);
         }
-        return clientesConDeudas;
-
+        return clientesConProductosVencidos;
     }
 
-    public ArrayList<Producto> listaDeproductosPorCliente(Cliente c) {
-        ArrayList<Producto> productosCliente = new ArrayList<Producto>();
-        for (Producto producto : productos) {
-            if(producto.contieneCliente(c))
-            productosCliente.add(producto);
-        }
-        return productosCliente;
-
+    public ArrayList<Producto> obtenerListaDeProductosVencidosPorCliente(Cliente c){
+        return c.listaDeProductosVencidos();
     }
+
+  
 
     public static void main(String[] args) {
 
@@ -81,20 +82,20 @@ public class VideoClub {
         videoClub.agregarProducto(v1);
         videoClub.agregarProducto(p1);
 
-        if (videoClub.sePuedeAlquilar(p1)) {
+        if (videoClub.sePuedeAlquilar(p1)) {                                                                    // Se podria setear desde la fecha actual  + una cantidad de dias determinados
             videoClub.alquilar(p1, videoClub.obtenerCliente("Juan"), LocalDate.parse("2021-09-15"));
-            videoClub.alquilar(v1, videoClub.obtenerCliente("Pedro"), LocalDate.parse("2021-09-15"));            
+            videoClub.alquilar(v1, videoClub.obtenerCliente("Pedro"), LocalDate.parse("2021-09-15")); 
+            videoClub.alquilar(p1, videoClub.obtenerCliente("Pedro"), LocalDate.parse("2021-09-23"));           
         } else
             System.out.println("No se puede alquilar");
 
-        System.out.println("Cantidad de peliculas disponibles Rapido y Furioso");
-        System.out.println(p1.getCantidad());
+        System.out.println("Cantidad de peliculas disponibles Rapido y Furioso  " + p1.getCantidad());
+        
 
-        System.out.println(
-                "El vehiculo Ford, Patente AG285RG , se encuentra disponible: " + videoClub.sePuedeAlquilar(v1));
+        System.out.println("El vehiculo Ford, Patente AG285RG , se encuentra disponible: " + videoClub.sePuedeAlquilar(v1));
 
         // Clientes con items vencidos
-        ArrayList<Cliente> clientesItemsVencidos = videoClub.obtenerClientesItemsVencidos();
+        ArrayList<Cliente> clientesItemsVencidos = videoClub.obtenerClientesConAlquileresVencido();
         if (clientesItemsVencidos != null) {
             System.out.println("********** Lista de deudores **************");
             for (Cliente cliente : clientesItemsVencidos) {
@@ -108,7 +109,15 @@ public class VideoClub {
 
         System.out.println("**********Productos de un cliente************");
         System.out.println(c1); 
-        for (Producto producto : videoClub.listaDeproductosPorCliente(c1)) {
+        for (Producto producto : videoClub.productosAlquiladosPorCliente(c2)) {
+            System.out.println(producto);
+        }
+
+
+        // Obtener productos vencidos por cliente
+        System.out.println("**********Productos vencidos por cliente************");
+        System.out.println(c1); 
+        for (Producto producto : videoClub.obtenerListaDeProductosVencidosPorCliente(c1)) {
             System.out.println(producto);
         }
        

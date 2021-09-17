@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public abstract class Producto {
     private String nombre;
@@ -11,11 +12,7 @@ public abstract class Producto {
         return this.nombre;
     }
 
-    public abstract boolean sePuedeAlquilar();
+    public abstract void alquilar();
+    public abstract boolean sePuedeAlquilar(); 
 
-    public abstract void alquilar(Cliente c);
-
-    public abstract ArrayList<Cliente> obtenerClienteConVencimiento();
-
-    public abstract boolean contieneCliente(Cliente c);
 }
