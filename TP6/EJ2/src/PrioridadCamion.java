@@ -1,4 +1,4 @@
-public class PrioridadCamion extends PuertoDeCarga{
+public class PrioridadCamion extends PrioridadCarga{
     
    
     

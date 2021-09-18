@@ -1,4 +1,4 @@
-public class PrioridadBarco extends PuertoDeCarga {
+public class PrioridadBarco extends PrioridadCarga {
     
 
     public boolean prioridadTransporte(Transporte c, Transporte t){

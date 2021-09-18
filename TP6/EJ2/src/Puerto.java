@@ -5,7 +5,9 @@ public class Puerto {
 
    private PuertoDeCarga puertoDeCarga; 
 
-   
+   public Puerto(){
+       this.puertoDeCarga = new PuertoDeCarga();
+   }
 
     public void agregarCamion(Transporte t){
       
@@ -17,8 +19,8 @@ public class Puerto {
         puertoDeCarga.agregarBarco(t);
     }
 
-    public void setPrioridadSegunTransporte(PuertoDeCarga p){
-        this.puertoDeCarga=p;
+    public void setPrioridadSegunTransporte(PrioridadCarga p){
+        this.puertoDeCarga.setPrioridadDeCarga(p);
     }
 
     public void imprimirListaDeCamiones(){
@@ -27,6 +29,27 @@ public class Puerto {
 
     public void imprimirListaDeBarcos(){
         puertoDeCarga.imprimirListaDeBarcos();
+    }
+
+    public void cargarBarcos(){
+
+        int cantidadDeCamiones = puertoDeCarga.cantidadDeCamiones();
+        int cantidadDeBarcos = puertoDeCarga.cantidadDeBarcos();
+        while( cantidadDeBarcos > 0 || cantidadDeCamiones>0){
+        
+        
+           // puertoDeCarga.cargarBarco();    
+            puertoDeCarga.descargarCamion(); 
+            puertoDeCarga.cargarBarco();
+
+            cantidadDeBarcos--;
+           cantidadDeCamiones--; 
+           if(cantidadDeBarcos==0 || cantidadDeCamiones==0){
+            break;
+           } 
+          
+        }
+      
     }
    
 }
