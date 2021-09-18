@@ -14,9 +14,6 @@ public class VideoClub {
 
     ArrayList<Cliente> clientes;
     ArrayList<Producto> productos;
-   
-
-
 
     public VideoClub() {
         this.clientes = new ArrayList<Cliente>();

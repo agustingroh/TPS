@@ -11,8 +11,6 @@ public class Alquiler {
         this.vencimiento = vencimiento;
     }
 
-
-
     public Producto getProducto() {
         return this.producto;
     }
