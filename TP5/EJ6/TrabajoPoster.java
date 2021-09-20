@@ -1,13 +1,13 @@
 public class TrabajoPoster extends Trabajo {
     
-    public TrabajoPoster(){
-        super();
+    public TrabajoPoster(String nombre){
+        super(nombre);
     }
 
 
     public boolean esUnEvaluadorApto(Evaluador e){
         for (String palabra : this.palabrasClave) {
-         if(e.poseeConocimiento(palabra)) return true;;
+         if(e.contienePalabraClave(palabra)) return true;;
         }
         return false;
     }

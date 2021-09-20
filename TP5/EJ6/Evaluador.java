@@ -21,6 +21,10 @@ public class Evaluador {
         this.palabrasClave.addAll(palabrasClave);
     }
 
+    public void agregarTemaConocido(String tema){
+        if(!this.temasConocidos.contains(tema)) temasConocidos.add(tema);
+    }
+
 
     public boolean contienePalabraClave(String palabra){
         return this.palabrasClave.contains(palabra);

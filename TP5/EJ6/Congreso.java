@@ -29,9 +29,9 @@ public class Congreso {
 
     public boolean tipoDeEvaluador(Evaluador e){
        for (String tema : this.temasEspecificos) {
-           if(!e.poseeConocimiento(tema)) return false;
+           if(e.poseeConocimiento(tema)) return true;
        }
-       return true;
+       return false;
     }
 
 
@@ -45,13 +45,25 @@ public class Congreso {
     }
 
 // qué trabajos pueden asignarse un evaluador particular
-    public ArrayList <Trabajo> sePuedeAsignarTrabajo(Evaluador e){
+    public ArrayList <Trabajo> listaDeTrabajosAptosPorEvaluador(Evaluador e){
         ArrayList<Trabajo> trabajosAptosEvaluador = new ArrayList<Trabajo>();
         for (Trabajo  trabajo : this.trabajos) {
            if(trabajo.esUnEvaluadorApto(e)) trabajosAptosEvaluador.add(trabajo);
         }
         return trabajosAptosEvaluador;
     }
+
+    // qué trabajos pueden asignarse un evaluador particular
+    public int cantidadDeTrabajosPorEvaluador(Evaluador e){
+       int trabajosAptos =0;
+        for (Trabajo  trabajo : this.trabajos) {
+           if(trabajo.esUnEvaluadorApto(e)) trabajosAptos++;
+        }
+        return trabajosAptos;
+    }
+
+
+ 
     
 
 } 
