@@ -1,13 +1,12 @@
-
 import java.time.LocalDate;
 
-public class Barco extends Transporte {
+public class Camion extends Transporte{
 
     private double capacidad;
     private LocalDate fechaDeingreso;
 
 
-    public Barco(double capacidad,LocalDate fechaDeIngreso){
+    public Camion(double capacidad,LocalDate fechaDeIngreso){
         this.capacidad = capacidad;
         this.fechaDeingreso = fechaDeIngreso;
     }
@@ -30,10 +29,17 @@ public class Barco extends Transporte {
         this.fechaDeingreso = fechaDeingreso;
     }
 
+
+    public boolean prioridad(Transporte camion){
+        Camion aux = (Camion)camion;
+        if(this.getFechaDeIngreso().compareTo(aux.getFechaDeIngreso())>0)return true;
+        return false;
+    }
+
+
     @Override
     public String toString(){
         return "Capacidad: " + this.getCapacidadDeCarga() + " Fecha de ingreso " + this.getFechaDeIngreso(); 
     }
-
 
 }

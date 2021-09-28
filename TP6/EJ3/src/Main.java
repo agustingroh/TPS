@@ -11,7 +11,7 @@ class Main {
         Transporte t1 = new Camion(5000, LocalDate.parse("2021-10-17"));
         Transporte t2 = new Camion(8000, LocalDate.parse("2021-10-18"));
 
-        puerto.setPrioridadSegunTransporte(new PrioridadCamion());
+     
 
         puerto.agregarCamion(t2);
         puerto.agregarCamion(t1);               
@@ -23,7 +23,7 @@ class Main {
         Transporte b2 = new Barco(510000, LocalDate.parse("2021-10-17"));
         Transporte b3 = new Barco(400000, LocalDate.parse("2021-10-17"));
         Transporte b4 = new Barco(300000, LocalDate.parse("2021-10-17"));
-        puerto.setPrioridadSegunTransporte(new PrioridadBarco());
+      
         puerto.agregarBarco(b1);
         puerto.agregarBarco(b2);
         puerto.agregarBarco(b3);
@@ -33,7 +33,7 @@ class Main {
 
       
 // Carga de Barcos
-         puerto.cargarBarcos();
+        // puerto.cargarBarcos();
 
         // Lista de barcos y camiones en cola restantes
         System.out.println("\n Lista de barcos y camiones en cola restantes \n");

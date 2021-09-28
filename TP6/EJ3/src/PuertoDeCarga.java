@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class PuertoDeCarga {
 
-    PrioridadCarga prioridad;
+    PrioridadCarga prioridadCamion;
+    PrioridadCarga prioridadBarco;
 
     private ArrayList<Transporte> barcos;
     private ArrayList<Transporte> camiones;
@@ -13,39 +14,8 @@ public class PuertoDeCarga {
         this.camiones = new ArrayList<Transporte>();
     }
 
-    public void setPrioridadDeCarga(PrioridadCarga prioridadCarga){
-        this.prioridad=prioridadCarga;
-    }
 
-    public void agregarCamion(Transporte c) {
-        boolean encontro = false;
-
-        for (int i = 0; i < this.camiones.size(); i++) {
-            if (this.prioridad.prioridadTransporte(c, camiones.get(i))) {
-                this.camiones.add(i, c);
-                encontro = true;
-            }
-        }
-
-        if (!encontro)
-            this.camiones.add(c);
-
-    }
-
-    public void agregarBarco(Transporte b) {
-        boolean encontro = false;
-
-        for (int i = 0; i < this.barcos.size(); i++) {
-            if (this.prioridad.prioridadTransporte(b, barcos.get(i))) {
-                this.barcos.add(i, b);
-                encontro = true;
-            }
-        }
-
-        if (!encontro)
-            this.barcos.add(b);
-
-    }
+// como hago para tener un solo metodo de carga? es posible?
 
     public void imprimirListaDeCamiones() {
         for (Transporte camion : camiones) {
