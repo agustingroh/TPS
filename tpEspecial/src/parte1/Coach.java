@@ -19,17 +19,24 @@ public class Coach extends Persona{
  
 
 	// TO DO 
-	public List<String> listaDeInstrumentosParticipantes(){
+/*	public List<String> listaDeInstrumentosParticipantes(){
 	List <String> lista = new ArrayList<String>();
 		for (Participante participante : this.participantes) {
-			List<String> aux =	participante.obtenerInstrumentos();
-			for (String instrumento : aux) {
-				if(!lista.contains(instrumento))
-				lista.add(instrumento);
+			int cantidad =	participante.obtenerCantidadInstrumentos();
+			for (int i =0; i<cantidad ; i++){
+				String elemento = participante.getInstrumento(i);
+				if(!lista.contains(elemento))
+				lista.add(elemento);
 			}
 		
 		}
 		return lista;
+	}*/
+
+	public ArrayList<String> listaCriterio (Criterio c){
+
+		return c.obtenerLista(this);
+
 	}
 
 	public int cantidadDeParticipantes(){
