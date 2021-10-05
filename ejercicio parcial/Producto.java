@@ -23,6 +23,14 @@ public class Producto {
         return this.precio;
     }
 
+
+
+    public double getPrecioFinal(ComportamientoProducto c){   
+       return  c.getPrecio(this);           
+        // return comportamiento.getPrecio(this);    
+
+    }
+
     public double getPrecioFinal(){              
         return comportamiento.getPrecio(this);    
 

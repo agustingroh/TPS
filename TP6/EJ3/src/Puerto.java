@@ -4,33 +4,33 @@
 public class Puerto {
 
 
-   PrioridadCarga camiones;
-   PrioridadCarga barcos;
+   ColaDeCarga camiones;
+   ColaDeCarga barcos;
 
 
    public Puerto(){
   
-       this.barcos = new PrioridadCarga();
-       this.camiones = new PrioridadCarga();
+       this.barcos = new ColaDeCarga();
+       this.camiones = new ColaDeCarga();
    }
 
-    public void agregarCamion(Transporte camion){
+    public void agregarCamion(Comparable camion){
       
         camiones.agregar(camion);
     }
 
-    public void agregarBarco(Transporte barco){
+    public void agregarBarco(Comparable barco){
       
-       barcos.agregar(barco);
+        barcos.agregar(barco);
     }
 
   
     public void imprimirListaDeCamiones(){
-        camiones.imprimirLista();
+       camiones.imprimirLista();
     }
 
     public void imprimirListaDeBarcos(){
-        barcos.imprimirLista();
+       barcos.imprimirLista();
     }
 
     // public void cargarBarcos(){

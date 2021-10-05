@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Camion extends Transporte{
+public class Camion implements Comparable<Camion>{
 
     private double capacidad;
     private LocalDate fechaDeingreso;
@@ -30,10 +30,17 @@ public class Camion extends Transporte{
     }
 
 
-    public boolean prioridad(Transporte camion){
-        Camion aux = (Camion)camion;
-        if(this.getFechaDeIngreso().compareTo(aux.getFechaDeIngreso())>0)return true;
-        return false;
+    // public boolean prioridadDeCarga(Transporte camion){
+    //     Camion aux = (Camion)camion;
+    //     if(this.getFechaDeIngreso().compareTo(aux.getFechaDeIngreso())>0)return true;
+    //     return false;
+    // }
+
+   
+    @Override
+    public int compareTo(Camion c){
+    Camion aux = (Camion)c;
+    return aux.fechaDeingreso.compareTo(this.getFechaDeIngreso());
     }
 
 

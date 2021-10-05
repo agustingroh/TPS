@@ -78,6 +78,11 @@ public class Supermercado {
         producto1.setOferta(new SinDescuento()) ;
         System.out.println(producto1.enOferta());
         System.out.println(producto1.getPrecioFinal());
+        
 
+
+        Figura myCirculo = new Circulo(5.64189);
+
+        System.out.println(myCirculo);
     }
 }
