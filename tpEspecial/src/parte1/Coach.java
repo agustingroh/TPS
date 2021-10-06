@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import parte1.criterios.Criterio;
 import parte1.listas.ListaSegunRequerimiento;
-//como importo las listas??????
+
 
 public class Coach extends Persona{
 	
 	private List<Participante> participantes;
+	private  Comportamiento comportamiento; 
 	
 	public Coach(String nombre,String apellido,int edad) {
 		super(nombre,apellido,edad);
 		this.participantes=new ArrayList<>();
+		this.comportamiento = null;    // como hacia ariel????
 	}
 	
 	
@@ -23,7 +25,10 @@ public class Coach extends Persona{
 	public ArrayList<Participante> getParticipantes(){
 		return new ArrayList<>(this.participantes);
 	}
- 
+	
+	public void setComportamiento(Comportamiento c){
+		this.comportamiento = c;
+	}
 
 	// TO DO 
 /*	public List<String> listaDeInstrumentosParticipantes(){
