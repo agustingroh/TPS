@@ -1,4 +1,5 @@
-package parte1;
+package parte1.criterios;
+import parte1.Participante;
 
 public  class CriterioIdioma extends Criterio {
     private String idioma;

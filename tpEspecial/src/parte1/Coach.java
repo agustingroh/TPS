@@ -3,6 +3,7 @@ package parte1;
 import java.util.ArrayList;
 import java.util.List;
 import parte1.criterios.Criterio;
+import parte1.listas.ListaSegunRequerimiento;
 //como importo las listas??????
 
 public class Coach extends Persona{
@@ -17,6 +18,10 @@ public class Coach extends Persona{
 	
 	public void agregarParticipante(Participante p) {
 		this.participantes.add(p);
+	}
+
+	public ArrayList<Participante> getParticipantes(){
+		return new ArrayList<>(this.participantes);
 	}
  
 
@@ -71,8 +76,8 @@ public class Coach extends Persona{
 	
 	//filtros
 
-	public ArrayList<String> busqueda (Criterio criterio){
-		ArrayList<String> participantesQueCumplen = new ArrayList<String> ();
+	public ArrayList<Participante> busqueda (Criterio criterio){
+		ArrayList<Participante> participantesQueCumplen = new ArrayList<Participante> ();
 
 		for (Participante participante : this.participantes){
 			if (criterio.cumple(participante)){

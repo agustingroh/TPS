@@ -1,9 +1,11 @@
-package parte1;
+package parte1.criterios;
+import parte1.Participante;
+
 
 public  class CriterioMayorEdad extends Criterio {
     private int edad;
 
-    public CriterioIdioma (int edad){
+    public CriterioMayorEdad (int edad){
         this.edad = edad;
     }
 

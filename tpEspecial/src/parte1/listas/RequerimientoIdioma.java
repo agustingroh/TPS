@@ -1,4 +1,8 @@
-package parte1;
+package parte1.listas;
+
+import java.util.ArrayList;
+
+import parte1.Participante;
 
 public class RequerimientoIdioma extends ListaSegunRequerimiento{
 
@@ -7,5 +11,4 @@ public class RequerimientoIdioma extends ListaSegunRequerimiento{
     
         return p.getIdiomas();
     }
-
 }

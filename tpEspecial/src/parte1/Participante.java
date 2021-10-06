@@ -18,29 +18,29 @@ public class Participante extends Persona{
 		this.instrumentos=new ArrayList<>();
 	}
 
-	public List<String> getInstrumentos (){
+	public ArrayList<String> getInstrumentos (){
 		return new ArrayList<String>(this.instrumentos);
 	}
 
-	public void addInstrumento (String ins){
-		this.instrumentos.add(ins);
+	public void addInstrumento (String instrumentos){
+		this.instrumentos.add(instrumentos);
 	}
 
-	public List<String> getIdiomas (){
+	public ArrayList<String> getIdiomas (){
 		return new ArrayList<String>(this.idiomas);
 	}
 
-	public void addInstrumento (String idioma){
+	public void addIdioma (String idioma){
 		this.idiomas.add(idioma);
 	}
 
 
-	public List<String> getGeneros (){
-		return new ArrayList<String>(this.idiomas);
+	public ArrayList<String> getGeneros (){
+		return new ArrayList<String>(this.generosMusicales);
 	}
 
 	public void addGenero (String genero){
-		this.generos.add(genero);
+		this.generosMusicales.add(genero);
 	}
 
 }

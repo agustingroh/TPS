@@ -1,11 +1,15 @@
-package parte1;
+package parte1.listas;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import parte1.*;
 
 public abstract class ListaSegunRequerimiento {
 
     public  ArrayList<String> obtenerLista(Coach c){
 
         ArrayList <String> lista = new ArrayList<String>();
-            for (Participante participante: c.participantes ){
+            for (Participante participante: c.getParticipantes() ){
                 ArrayList<String> listaParticipante = this.getLista(participante);
 
                 for (int i =0; i<listaParticipante.size(); i++){

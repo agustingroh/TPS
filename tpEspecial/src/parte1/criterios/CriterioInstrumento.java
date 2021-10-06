@@ -1,9 +1,10 @@
-package parte1;
+package parte1.criterios;
+import parte1.Participante;
 
 public  class CriterioInstrumento extends Criterio {
     private String instrumento;
 
-    public CriterioIdioma (String instrumento){
+    public CriterioInstrumento (String instrumento){
         this.instrumento = instrumento;
     }
 

@@ -1,4 +1,8 @@
-package parte1;
+package parte1.listas;
+
+import java.util.ArrayList;
+
+import parte1.Participante;
 
 public class RequerimientoInstrumento extends ListaSegunRequerimiento{
 
@@ -18,11 +22,12 @@ public class RequerimientoInstrumento extends ListaSegunRequerimiento{
 		}
 		return lista;
     }*/
+	
+
 	@Override
-	public  ArrayList<String> getLista(Participante p){
-    
-        return p.getInstrumentos();
-    }
+	public ArrayList<String> getLista(Participante p) {
+		return p.getInstrumentos();
+	}
 
 
 }

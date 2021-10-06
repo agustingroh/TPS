@@ -1,9 +1,12 @@
-package parte1;
+package parte1.criterios;
+import parte1.Participante;
+
+
 
 public  class CriterioNOT extends Criterio {
 	Criterio c1;
 	
-	public CriterioNot(Criterio c1) {
+	public CriterioNOT(Criterio c1) {
 		this.c1=c1;
 	}
 	

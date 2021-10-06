@@ -1,9 +1,10 @@
-package parte1;
+package parte1.criterios;
+import parte1.Participante;
 
 public  class CriterioGenero extends Criterio {
     private String genero;
 
-    public CriterioIdioma (String genero){
+    public CriterioGenero (String genero){
         this.genero = genero;
     }
 

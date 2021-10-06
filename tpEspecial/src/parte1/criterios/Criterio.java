@@ -1,4 +1,6 @@
-package parte1;
+package parte1.criterios;
+
+import parte1.Participante;
 
 public abstract class Criterio {
 
