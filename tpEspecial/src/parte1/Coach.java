@@ -2,6 +2,8 @@ package parte1;
 
 import java.util.ArrayList;
 import java.util.List;
+import parte1.criterios.Criterio;
+//como importo las listas??????
 
 public class Coach extends Persona{
 	
@@ -33,11 +35,25 @@ public class Coach extends Persona{
 		return lista;
 	}*/
 
-	public ArrayList<String> listaCriterio (Criterio c){
+	public ArrayList<String> listaRequerimiento (ListaSegunRequerimiento c){
 
 		return c.obtenerLista(this);
 
 	}
+
+	/*public List<String> listaSegunCriterioParticipantes(){
+		ArrayList <String> lista = new ArrayList<String>();
+		for (Participante participante: this.participantes ){
+			ArrayList<String> liataParticipante = participante.getInstrumentos
+
+			for (int i =0; i<listaParticipante.size(); i++){
+				if (!lista.contains(listaParticipante.get(i))){
+					lista.add(listaParticipante.get(i));
+				}
+			}
+		}
+		return lista;
+	}*/
 
 	public int cantidadDeParticipantes(){
 		return this.participantes.size();
@@ -53,6 +69,18 @@ public class Coach extends Persona{
 		return suma/this.cantidadDeParticipantes();
 	}
 	
+	//filtros
+
+	public ArrayList<String> busqueda (Criterio criterio){
+		ArrayList<String> participantesQueCumplen = new ArrayList<String> ();
+
+		for (Participante participante : this.participantes){
+			if (criterio.cumple(participante)){
+				participantesQueCumplen.add(participante);
+			}
+		}
+		return participantesQueCumplen;
+	}
 
 
 }

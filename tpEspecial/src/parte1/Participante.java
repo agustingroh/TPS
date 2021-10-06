@@ -16,10 +16,31 @@ public class Participante extends Persona{
 		this.generosMusicales=new ArrayList<>();
 		this.idiomas=new ArrayList<>();
 		this.instrumentos=new ArrayList<>();
-		// TODO Auto-generated constructor stub
+	}
+
+	public List<String> getInstrumentos (){
+		return new ArrayList<String>(this.instrumentos);
+	}
+
+	public void addInstrumento (String ins){
+		this.instrumentos.add(ins);
+	}
+
+	public List<String> getIdiomas (){
+		return new ArrayList<String>(this.idiomas);
+	}
+
+	public void addInstrumento (String idioma){
+		this.idiomas.add(idioma);
 	}
 
 
-	
+	public List<String> getGeneros (){
+		return new ArrayList<String>(this.idiomas);
+	}
+
+	public void addGenero (String genero){
+		this.generos.add(genero);
+	}
 
 }

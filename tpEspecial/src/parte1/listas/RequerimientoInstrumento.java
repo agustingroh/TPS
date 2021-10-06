@@ -1,8 +1,8 @@
 package parte1;
 
-public class CriterioInstrumento extends CriterioBusqueda{
+public class RequerimientoInstrumento extends ListaSegunRequerimiento{
 
-    public  ArrayList<String> obtenerLista(Coach c){
+    /*public  ArrayList<String> obtenerLista(Coach c){
 
         List<String> lista = new ArrayList<String>;
 
@@ -17,6 +17,11 @@ public class CriterioInstrumento extends CriterioBusqueda{
 		
 		}
 		return lista;
+    }*/
+	@Override
+	public  ArrayList<String> getLista(Participante p){
+    
+        return p.getInstrumentos();
     }
 
 
