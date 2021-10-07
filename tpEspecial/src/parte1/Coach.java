@@ -92,6 +92,10 @@ public class Coach extends Persona{
 		c.agregarParticipante(pp2);
 		c.agregarParticipante(pp3);
 
+		//TEST PROMEDIO EDAD	
+		System.out.println("\n******************PROMEDIO EDAD*******************");
+		System.out.println(c.promedioEdadParticipantes());
+
 
 		// TEST IDIOMAS
 		System.out.println("\n******************TEST IDIOMAS*******************");
