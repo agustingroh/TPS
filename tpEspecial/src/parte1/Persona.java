@@ -43,6 +43,8 @@ public class Persona {
 		this.edad = edad;
 	}
 	
-	
+	public String toString(){
+		return "Nombre: " +  this.getNombre() + " Apellido: " + this.getApellido() + " Edad: "  + this.getEdad();
+	}
 
 }

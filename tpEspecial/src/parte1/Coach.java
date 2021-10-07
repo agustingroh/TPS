@@ -3,7 +3,10 @@ package parte1;
 import java.util.ArrayList;
 import java.util.List;
 import parte1.criterios.Criterio;
+import parte1.criterios.CriterioIdioma;
 import parte1.listas.ListaSegunRequerimiento;
+import parte1.listas.RequerimientoGenero;
+import parte1.listas.RequerimientoIdioma;
 
 
 public class Coach extends Persona{
@@ -30,40 +33,10 @@ public class Coach extends Persona{
 		this.comportamiento = c;
 	}
 
-	// TO DO 
-/*	public List<String> listaDeInstrumentosParticipantes(){
-	List <String> lista = new ArrayList<String>();
-		for (Participante participante : this.participantes) {
-			int cantidad =	participante.obtenerCantidadInstrumentos();
-			for (int i =0; i<cantidad ; i++){
-				String elemento = participante.getInstrumento(i);
-				if(!lista.contains(elemento))
-				lista.add(elemento);
-			}
-		
-		}
-		return lista;
-	}*/
-
 	public ArrayList<String> listaRequerimiento (ListaSegunRequerimiento c){
-
 		return c.obtenerLista(this);
-
 	}
 
-	/*public List<String> listaSegunCriterioParticipantes(){
-		ArrayList <String> lista = new ArrayList<String>();
-		for (Participante participante: this.participantes ){
-			ArrayList<String> liataParticipante = participante.getInstrumentos
-
-			for (int i =0; i<listaParticipante.size(); i++){
-				if (!lista.contains(listaParticipante.get(i))){
-					lista.add(listaParticipante.get(i));
-				}
-			}
-		}
-		return lista;
-	}*/
 
 	public int cantidadDeParticipantes(){
 		return this.participantes.size();
@@ -92,5 +65,59 @@ public class Coach extends Persona{
 		return participantesQueCumplen;
 	}
 
+	public static void main(String[] args) {
+		Coach c = new Coach("manolo", "nn", 22);
+
+		Participante pp1 = new Participante("a", "a", 20);
+		pp1.addIdioma("ingles");
+		pp1.addIdioma("frances");
+		pp1.addGenero("pop");
+	
+
+
+
+		Participante pp2 = new Participante("b", "b", 30);
+		pp2.addIdioma("italiano");
+		pp2.addIdioma("Aleman");
+		pp2.addGenero("rock");
+	
+
+		Participante pp3 = new Participante("c", "c", 40);
+		pp3.addIdioma("portugues");
+		pp3.addIdioma("ingles");
+		pp3.addGenero("jazz");
+	
+
+		c.agregarParticipante(pp1);
+		c.agregarParticipante(pp2);
+		c.agregarParticipante(pp3);
+
+
+		// TEST IDIOMAS
+		System.out.println("\n******************TEST IDIOMAS*******************");
+		ArrayList<String> listaDeIdioamas = c.listaRequerimiento(new RequerimientoIdioma());
+		for (String idioma : listaDeIdioamas) {
+			System.out.println(idioma);
+		}
+
+
+		// TEST GENEROS
+		System.out.println("\n******************TEST GENEROS*******************");
+		ArrayList<String> listaDeGeneros = c.listaRequerimiento(new RequerimientoGenero());
+		for (String genero : listaDeGeneros) {
+			System.out.println(genero);
+		}
+	
+
+		//TEST FILTROS
+		System.out.println("\n******************TEST FILTROS*******************");
+		ArrayList<Participante> listaDeParticipantesPorIdioma = c.busqueda(new CriterioIdioma("ingles"));
+		for (Participante participante : listaDeParticipantesPorIdioma) {
+			System.out.println(participante);
+		}
+
+		
+
+	}
 
 }

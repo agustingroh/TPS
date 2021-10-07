@@ -11,4 +11,9 @@ public class RequerimientoIdioma extends ListaSegunRequerimiento{
     
         return p.getIdiomas();
     }
+
+    @Override
+    public ArrayList<String> ordenarLista(){
+        return super.getListaElementos();
+    }
 }
