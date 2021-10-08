@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Palabra {
+public class Palabra implements Comparable<Palabra>{
 
     private String palabra;
-    List<String>sinonimos;
+    private List<String>sinonimos;
     private String funcionGramatical;
     private List<String> definiciones;   
     private List<String> antonimos;
@@ -14,8 +14,6 @@ public class Palabra {
         this.sinonimos = new ArrayList<>();
         this.definiciones = new ArrayList<>();
         this.antonimos = new ArrayList<>();
-
-
     }
 
 
@@ -27,12 +25,12 @@ public class Palabra {
         this.palabra = palabra;
     }
 
-    public List<String> getSinonimos() {
-        return this.sinonimos;
+    public ArrayList<String> getSinonimos() {
+        return new ArrayList<String>(this.sinonimos);
     }
 
-    public void setSinonimos(List<String> sinonimos) {
-        this.sinonimos = sinonimos;
+    public void AddSinonimo(String sinonimo) {
+        this.sinonimos.add(sinonimo);
     }
 
     public String getFuncionGramatical() {
@@ -62,5 +60,11 @@ public class Palabra {
 
     public String toString(){
         return this.getPalabra();
+    }
+
+
+    @Override
+    public int compareTo(Palabra p){
+        return this.palabra.compareTo(p.getPalabra());
     }
 }

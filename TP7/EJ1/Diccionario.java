@@ -1,6 +1,9 @@
-import java.rmi.Remote;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import Ordenamiento.*;
 
 /*Diccionario
 Un diccionario almacena una lista de palabras, ordenadas alfabéticamente. Cada palabra del
@@ -24,8 +27,8 @@ public class Diccionario {
     }
 
     public void agregarPalabra(Palabra p){
-        if(!palabras.contains(p))
-            palabras.add(p);
+              palabras.add(p);
+              Collections.sort(palabras);
     }
 
     public int cantidadDePalabras(){
@@ -40,32 +43,52 @@ public class Diccionario {
         }
     }
 
+    public ArrayList<Palabra> listaDePalabras(){
+        return new ArrayList<Palabra>(this.palabras);
+    }
+
+    //Dada una palabra, obtener la lista de sinónimos, ordenada ascendentemente
+    // Dada una palabra, obtener la lista de antónimos, ordenada ascendentemente
+
+    public ArrayList<String> obtenerLista(CriterioBusqueda c, Ordenamiento o){
+        ArrayList<String> l = c.obtener(this);  
+        o.ordenar(l);
+      
+        return l;
+    }
+
     public void imprimirPalabras(){
         for (Palabra palabra : palabras) {
             System.out.println(palabra);
         }
     }
 
-publ
+
 
 
     public static void main(String[] args) {
         
-        Diccionario d = new Diccionario();
-        Palabra hola = new Palabra("hola"); 
-        Palabra chau = new Palabra("chau");
+        Diccionario diccionario = new Diccionario();
+        Palabra pp1 = new Palabra("abundante"); 
+        Palabra pp2 = new Palabra("test");
+        pp1.AddSinonimo("mucho");
+        pp1.AddSinonimo("excesivo");
 
-        d.agregarPalabra(hola);
-        d.agregarPalabra(chau);
+        diccionario.agregarPalabra(pp1);
+        diccionario.agregarPalabra(pp2);
 
-        d.imprimirPalabras();
+        System.out.println(diccionario.obtenerLista(new Sinonimo("abundante"),new Descendente()));
 
-        d.eliminarPalabra(new EliminarPalabraNombre("hola"));
+        diccionario.imprimirPalabras();
+
+        diccionario.eliminarPalabra(new EliminarPalabraNombre("abundante"));
 
         System.out.println("Elimino palabra por nombre");
-        d.imprimirPalabras();
+        diccionario.imprimirPalabras();
             
         
     }
     
+
 }
+
